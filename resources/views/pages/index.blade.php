@@ -1,0 +1,5 @@
+@include('fragments/header')
+@include('fragments/navigation')
+@include('fragments/chatlist')
+@include('fragments/messagebox')
+@include('fragments/footer')

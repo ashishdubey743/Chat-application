@@ -1,0 +1,54 @@
+.profile-image-container {
+    width: 45px; /* Adjust the width as needed */
+    height: 40px; /* Adjust the height as needed */
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.profile-image {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.sender{
+    background-color: #f2f2f2; /* Use the desired darker color */
+    padding: 12px;
+    margin-bottom: 10px;
+}
+.message-list {
+    height: 842px; /* Set the desired height */
+    overflow-y: auto;
+    background-color: white;
+    padding: 10px; /* Optional padding for better aesthetics */
+}
+
+.sender_message{
+    opacity: 0.7;
+}
+
+.sender_name{
+    font-weight: bold;
+}
+
+.message-container{
+    height: 852px; /* Set the desired height */
+    overflow-y: auto;
+    background-color: #eae6df;
+    padding: 10px; /* Optional padding for better aesthetics */
+}
+
+.custom-no-gutters {
+    margin-right: -11px;
+    margin-left: -13px;
+}
+
+.custom-no-gutters [class^="col-"],
+.custom-no-gutters [class*=" col-"] {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.icon{
+    font-size: 20px;
+}
