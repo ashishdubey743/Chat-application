@@ -22,6 +22,8 @@ Route::get('/register', [ApiController::class, 'register']);
 Route::get('/otp_page', [ApiController::class, 'OTP_page']);
 Route::post('/process_register', [ApiController::class, 'process_register']);
 Route::post('/process_signin', [ApiController::class, 'process_signin']);
+Route::post('/process_profile_image', [ApiController::class, 'process_profile_image']);
+Route::get('/delete_image/{id}', [ApiController::class, 'delete_image']);
 Route::post('/verify_otp', [ApiController::class, 'verify_otp']);
 Route::get('/logout', function(){
     Session::forget('user');
@@ -30,4 +32,8 @@ Route::get('/logout', function(){
 
 Route::get('login', function(){
     return view('pages/login');
+});
+
+Route::middleware('auth.session')->get('add_profile_image', function(){
+    return view('pages/add_profile_image');
 });

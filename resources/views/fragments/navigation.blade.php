@@ -6,7 +6,16 @@
                     <div class="col-sm-2">
                         <!-- Profile Image Container -->
                         <div class="profile-image-container">
-                            <img src="https://www.shutterstock.com/image-photo/close-portrait-young-smiling-handsome-260nw-1180874596.jpg" alt="Profile Image" class="profile-image">
+                        <a data-bs-toggle="dropdown" href="#" aria-expanded="false">
+                            <img src="{{ asset('storage/' . session('user.image')) }}" alt="Profile Image" class="profile-image">
+                            <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/add_profile_image">Add Image</a></li>
+                            @if(session("user.image") != "")
+                            <li><a class="dropdown-item" href="/delete_image/{{ session('user.id') }}">Delete Image</a></li>
+                            @endif
+                            </ul>
+                        </a>
+                            
                         </div>
                     </div>
                     <div class="col-sm-2"></div>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\RegistrationRequest;
 use App\Http\Requests\SigninRequest;
 use App\Http\Requests\otpRequest;
+use App\Http\Requests\ProfileImageRequest;
 use App\Mail\otpEmail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
@@ -65,4 +66,35 @@ class ApiController extends Controller
             return back()->with('username.error', 'Invalid username or password. Please try again.');
         }
     }
+
+    public function process_profile_image(ProfileImageRequest $request){
+        $userid = $request->input("userid");
+        $profileImage = $request->file('profile');
+        $directory = 'profile_images';
+        $fileName = $profileImage->getClientOriginalName(); // Get the original filename
+        $profileImagePath = $profileImage->storeAs($directory, $fileName, 'public');
+        $user = User::find($userid);
+        $user->image = $profileImagePath;
+        session([
+            "user.image" => $profileImagePath,
+            "user.id" => $userid
+        ]);
+        $user->save();
+        return redirect('/');
+    }
+
+    public function delete_image($id){
+        $user = User::find($id);
+        $profileImagePath = $user->image;
+        $user->image = "";
+        session([
+            "user.image" => "",
+        ]);
+        if (Storage::disk('public')->exists($profileImagePath)) {
+            Storage::disk('public')->delete($profileImagePath);
+        }
+        return redirect('/');
+    }
 }
+
+

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('username');
             $table->string('password');
             $table->string('email')->unique();
-            // $table->string('image');
+            $table->string('image')->nullable();
             $table->string('bio');
             $table->timestamps();
         });
