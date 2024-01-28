@@ -41,7 +41,13 @@ class ApiController extends Controller
 
     public function verify_otp(otpRequest $request){
         if ($request['otp'] == Session::get('otp')) {
-            $user = User::create(Session::get('user'));
+            $validatedInputs = Session::get('user');
+            $user = User::create([
+                'username' => $validatedInputs['username'],
+                'password' => bcrypt($validatedInputs['password']), 
+                'email' => $validatedInputs['email'],
+                'bio' => $validatedInputs['bio'],
+            ]);
             Session::forget('otp');
             Session::forget('user');
             session(["user" => $user]);
@@ -50,9 +56,9 @@ class ApiController extends Controller
     }
 
     public function process_signin(SigninRequest $request) {
-        $credentials = $request->validated();
-        $user = User::where('email', $credentials['email'])->first();
-        if ($user && $user->password === $credentials['password']) {
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            $user = User::where('email', $credentials['email'])->first();
             session(['user' => $user]);
             return redirect('/')->with('success', 'Signin successful');
         } else {
