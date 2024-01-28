@@ -26,13 +26,13 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6 bg-color">
-                    <h2 class="mb-4 text-center">User Registration</h2>
-                    <form action="process_register" method="post" enctype="multipart/form-data">
-                        @csrf
+                    <h2 class="mb-4 text-center">User Login</h2>
+                    <form action="process_signin" method="post">
+                      @csrf
                         <div class="mb-3">
-                            <label for="username" class="form-label">Username</label>
-                            <input name="username" type="text" class="form-control" id="username" placeholder="Enter username" >
-                            @error('username')
+                            <label for="email" class="form-label">Email</label>
+                            <input name="email" type="email" class="form-control" id="email" placeholder="Enter Email" >
+                            @error('email')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
@@ -43,18 +43,7 @@
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input name="email" type="email" class="form-control" id="email" placeholder="Enter Email" >
-                            @error('email')
-                            <div class="text-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label for="bio" class="form-label">Bio</label>
-                            <textarea name="bio" class="form-control" id="bio" rows="3" placeholder="Enter bio"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100">Register</button>
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
                     </form>
                 </div>
             </div>

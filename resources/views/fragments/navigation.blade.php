@@ -13,7 +13,12 @@
                     <div class="col-sm-2"></div>
                     <div class="col-sm-2"><a class="text-dark" href=""><i class="fa-solid fa-people-group icon"></i></a></div>
                     <div class="col-sm-2"><a class="text-dark" href=""><i class="fa-solid fa-globe icon"></i></a></div>
-                    <div class="col-sm-2"><a class="text-dark" href=""><i class="fa-solid fa-ellipsis-vertical icon"></i></a></div>
+                    <div class="col-sm-2"><a data-bs-toggle="dropdown" href="#" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical icon"></i>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/logout">Log Out</a></li>
+                            <!-- <li><hr class="dropdown-divider"></li> -->
+                        </ul>
+                    </a></div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12 w-100 mt-3">
